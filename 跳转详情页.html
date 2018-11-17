@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<button>按钮</button>
+<div ></div>
+<script>
+    $(function(){
+        getList();
+    });
+
+    function getList(){
+//        console.log(listData);
+
+        var pageStart=0;  //页数
+        /*$.ajax({
+         url:"",
+         type:"get",
+         asycn:"false",
+         dataType:"json",
+         data:{}
+
+         }).done(function(){
+
+         });*/
+
+        var result=listData["listData0"+pageStart];
+//        console.log(result);
+
+        if (pageStart==0){
+            $("#ul").html("")
+        }
+
+        var list=result.data.list;
+        for (var i = 0; i < list.length; i++) {
+
+            `<li>
+                <div class="left fl">
+                    <a href="#"><img src="${coverImg}" alt=""></a>
+                </div>
+                <div class="right fr">
+                    <h3>${title}</h3>
+                    <p>${creatAt}</p>
+                    <p class="p1">${describe}</p>
+                </div>
+            </li>`
+
+
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

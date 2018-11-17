@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小鸟列表</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/liebiao.css">
+    <script src="js/listData.js"></script>
+</head>
+<body>
+<header>
+    <div class="inner">
+        <div class="logo fl">
+            <a href="index.html"> <img src="images/index%20(34).png" alt=""></a>
+        </div>
+        <nav class="fr">
+            <ul class="clear">
+                <li>首页</li>
+                <li>翡翠学院 <img src="images/index%20(35).png" alt="">
+                    <div class="layer">
+                        <ul>
+                            <li>小鸟掌学主页 <span class="right">></span></li>
+                            <li>小鸟掌学概述 <span class="right">></span></li>
+                            <li>对企业的价值 <span class="right">></span></li>
+                            <li>小鸟掌云 <span class="right">></span></li>
+                            <li>微课联盟 <span class="right">></span></li>
+                            <li>App下载 <span class="right">></span></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>卓新动态</li>
+                <li>企业文化 <img src="images/index%20(35).png" alt="">
+                    <div class="layer">
+                        <ul>
+                            <li>公司理念 <span class="right">></span></li>
+                            <li>公司文化 <span class="right">></span></li>
+                            <li>公司氛围 <span class="right">></span></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>人力资源 <img src="images/index%20(35).png" alt="">
+                    <div class="layer">
+                        <ul>
+                            <li>人才理念 <span class="right">></span></li>
+                            <li>团队介绍 <span class="right">></span></li>
+                            <li>招聘信息 <span class="right">></span></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>联系我们</li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<article>
+    <div class="inner">
+        <div class="content">
+            <div class="top clear">
+                <h1>卓新动态</h1>
+                <p>Our Dynamic</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="mid">
+                <h3>列表<img src="imgs/pen.png" alt=""></h3>
+                <ul id="list" class="clear">
+                    <!--<li>
+                        <div class="list_img fl"><img src="images/list_img01.jpg" alt=""></div>
+                        <div class="list_txt fr">
+                            <p class="title">卓新思创重装出发</p>
+                            <p class="time">2016-02-03 15:23:56</p>
+                            <p class="describe">小鸟掌学创建于2014年初，起源服务于四川省专业技术人员继续教育基地的在线培训平台</p>
+                        </div>
+                    </li>-->
+
+                </ul>
+                <div class="lodding">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<footer class="art8">
+    <div class="inner">
+        <div class="art8-top clear">
+            <div class="shang fr"></div>
+        </div>
+        <div class="art8-middle">
+            <ul class="clear">
+                <li class="li1"></li>
+                <li class="li2"></li>
+                <li class="li3"></li>
+                <li class="li4"></li>
+                <li class="li5"></li>
+                <li class="li6"></li>
+                <li class="li7"></li>
+            </ul>
+            <div class="contactus">
+                <img src="imgs/fixed_contactus.png" alt="">
+            </div>
+        </div>
+        <div class="art8-bottom">
+            <div class="line"></div>
+            <p>备案声明</p>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script>
+    {
+        $("nav>ul>li").hover(function () {
+            //$(".layer").hide();
+            //$(this).find(".layer").show();
+            $(this).find(".layer").slideDown(600);
+            console.log($(this).find(".layer"));
+        }, function () {
+            //$(".layer").hide();
+            $(this).find(".layer").slideUp(0);
+
+        });
+        $(".layer ul  li").hover(function () {
+            $(this).addClass("hover");
+            $(this).find(".right").css("display", "block")
+        }, function () {
+            $(this).removeClass("hover");
+            $(this).find(".right").css("display", "none")
+
+        });
+    }
+
+    var timer = null;
+    var target = 0; //目标位置
+    var leader = 0; //显示区域自身的位置
+    $(".shang").click(function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var step = (target - leader) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            window.scrollTo(0, leader);
+            if (leader === 0) {
+                clearInterval(timer);
+            }
+        }, 25)
+    });
+
+    var page = 0;
+    var x = 0;
+    for (var obj in listData) {
+        x++;
+    }
+    $(".lodding").click(function () {
+        page++;
+        if (page > x - 1) {
+            $(this).hide();
+            return
+        }
+        var data = listData["listData0" + page].data.list;
+        for (var k = 0; k < data.length; k++) {
+            $("#list").append(`
+            <li data-id="${data[k].sysId}">
+                        <div class="list_img fl"><img src="${data[k].coverImg}" title="${data[k].title}"></div>
+                        <div class="list_txt fr">
+                            <p class="title">${data[k].title}</p>
+                            <p class="time">${data[k].creatAt}</p>
+                            <p class="describe">${data[k].describe}</p>
+                        </div>
+                    </li>
+            `)
+
+        }
+    });
+
+    var data = listData["listData0" + page].data.list;
+    for (var k = 0; k < data.length; k++) {
+        $("#list").append(`
+            <li data-id="${data[k].sysId}">
+                        <div class="list_img fl"><img src="${data[k].coverImg}" title="${data[k].title}"></div>
+                        <div class="list_txt fr">
+                            <p class="title">${data[k].title}</p>
+                            <p class="time">${data[k].creatAt}</p>
+                            <p class="describe">${data[k].describe}</p>
+                        </div>
+                    </li>
+            `)
+
+    }
+
+
+    $("#list li").click(function () {
+        window.open("detils.html?id=" + $(this).attr("data-id"));
+    });
+    /*1、首先根据json数据遍历到每一条数据
+     * 2、通过模板替换添加或者字符串拼接添加数据到html中
+     * 3、根据点击的元素  获取到对应的id
+     * 4、将点击时对应的id值字符串拼接到url地址中  使打开详情页面时能获取到对应的id
+     *
+     *
+     * 5、通过封装的函数  getParam()获取到url中的id值
+     *           function getParam(name) {
+     *       var str = location.search.substring(1);
+     *       //解析Url地址信息
+     *       // 获取？后面的信息   字符串形式
+     *       var strReg = "(^|&)" + name + "=(\\w+)(&|$)";
+     *       //用字符串拼接一个含有变量的正则字符串strReg
+     *       var reg = new RegExp(strReg);
+     *       //利用正则构造函数将strReg变成正则赋值给reg
+     *       var arr = reg.exec(str);
+     *       //exec() 方法用于检索字符串中的正则表达式的匹配
+     *       //并得到数组形式    数组索引为2的就是对应正则的值val
+     *       if (arr) {
+     *       //如果数组存在
+     *       var val = arr[2];
+     *       return val;
+     *       //返回对应的值
+     *       } else {
+     *       //否则返回null
+     *       return null;
+     *     }
+     *     }
+     *
+     * 6、通过获取到的id和详情json中的数据匹配
+     * 7、把匹配对应的数据提出来跟详情页的进行替换
+     * 8、img出现get错误时因为没有给img一个正确的路径，
+     * 所以一开始给他一个正确路径，然后通过找到这个img 把数据中的路径给了这个img的src属性就可以解决
+     *
+     * */
+</script>
+</body>
+</html>

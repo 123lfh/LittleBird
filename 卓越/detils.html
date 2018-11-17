@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/detil.css">
+
+</head>
+<body>
+<header>
+    <!--<div class="inner">-->
+        <!--<div class="logo fl">-->
+            <!--<a href="index.html"> <img src="images/index%20(34).png" alt=""></a>-->
+        <!--</div>-->
+        <!--<nav class="fr">-->
+            <!--<ul class="clear">-->
+                <!--<li>首页</li>-->
+                <!--<li>翡翠学院 <img src="images/index%20(35).png" alt="">-->
+                    <!--<div class="layer">-->
+                        <!--<ul>-->
+                            <!--<li>小鸟掌学主页 <span class="right">></span></li>-->
+                            <!--<li>小鸟掌学概述 <span class="right">></span></li>-->
+                            <!--<li>对企业的价值 <span class="right">></span></li>-->
+                            <!--<li>小鸟掌云 <span class="right">></span></li>-->
+                            <!--<li>微课联盟 <span class="right">></span></li>-->
+                            <!--<li>App下载 <span class="right">></span></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li>卓新动态</li>-->
+                <!--<li>企业文化 <img src="images/index%20(35).png" alt="">-->
+                    <!--<div class="layer">-->
+                        <!--<ul>-->
+                            <!--<li>公司理念 <span class="right">></span></li>-->
+                            <!--<li>公司文化 <span class="right">></span></li>-->
+                            <!--<li>公司氛围 <span class="right">></span></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li>人力资源 <img src="images/index%20(35).png" alt="">-->
+                    <!--<div class="layer">-->
+                        <!--<ul>-->
+                            <!--<li>人才理念 <span class="right">></span></li>-->
+                            <!--<li>团队介绍 <span class="right">></span></li>-->
+                            <!--<li>招聘信息 <span class="right">></span></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li>联系我们</li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+    <!--</div>-->
+</header>
+<article>
+    <div class="inner">
+        <div class="content">
+            <div class="top clear">
+                <h1>卓新动态</h1>
+                <p>Our Dynamic</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="mid">
+                <h3>{title}
+                    <img src="imgs/pen.png" alt=""></h3>
+                <p class="gl">{time} {full}</p>
+                <div class="mid_img">
+                    <img class="th_img" src="images/index%20(1).png" alt="">
+                </div>
+                <div class="mid_text">
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<!--footer-->
+<footer class="art8">
+    <div class="inner">
+        <div class="art8-top clear">
+            <div class="shang fr"></div>
+        </div>
+        <div class="art8-middle">
+            <ul class="clear">
+                <li class="li1"></li>
+                <li class="li2"></li>
+                <li class="li3"></li>
+                <li class="li4"></li>
+                <li class="li5"></li>
+                <li class="li6"></li>
+                <li class="li7"></li>
+            </ul>
+            <div class="contactus">
+                <img src="imgs/fixed_contactus.png" alt="">
+            </div>
+        </div>
+        <div class="art8-bottom">
+            <div class="line"></div>
+            <p>备案声明</p>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/articleData.js"></script>
+<script>
+
+    {
+        $("nav>ul>li").hover(function () {
+            //$(".layer").hide();
+            //$(this).find(".layer").show();
+            $(this).find(".layer").slideDown(600);
+        }, function () {
+            //$(".layer").hide();
+            $(this).find(".layer").slideUp(0);
+
+        });
+        $(".layer ul  li").hover(function () {
+            $(this).addClass("hover");
+            $(this).find(".right").css("display", "block")
+        }, function () {
+            $(this).removeClass("hover");
+            $(this).find(".right").css("display", "none")
+
+        });
+    }
+    var timer = null;
+    var target = 0; //目标位置
+    var leader = 0; //显示区域自身的位置
+    $(".shang").click(function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var step = (target - leader) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            window.scrollTo(0, leader);
+            if (leader === 0) {
+                clearInterval(timer);
+            }
+        }, 25)
+    })
+
+    $(".mid_text").get(0).innerHTML = content;
+    function getParam(name) {
+        var str = location.search.substring(1);
+        //解析Url地址信息
+        // 获取？后面的信息   字符串形式
+        var strReg = "(^|&)" + name + "=(\\w+)(&|$)";
+        //用字符串拼接一个含有变量的正则字符串strReg
+        var reg = new RegExp(strReg);
+        //利用正则构造函数将strReg变成正则赋值给reg
+        var arr = reg.exec(str);
+        //exec() 方法用于检索字符串中的正则表达式的匹配
+        //并得到数组形式    数组索引为2的就是对应正则的值val
+        if (arr) {
+            //如果数组存在
+            var val = arr[2];
+            return val;
+            //返回对应的值
+        } else {
+            //否则返回null
+            return null;
+        }
+    }
+    var sid = getParam("id");
+    var ht = $(".mid").html();
+    for (var obj in articleData) {
+        var data = articleData[obj].data;
+        if (data.sysId == sid) {
+            ht = ht.replace("{title}", data.title)
+                    .replace("{time}", data.creatAt)
+                    .replace("{full}", data.creatByFullName);
+            $(".mid").html("");
+            $(".mid").append(ht);
+            $(".th_img").attr("src",data.coverImg);
+        }
+
+
+    }
+
+</script>
+</body>
+</html>

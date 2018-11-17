@@ -1,0 +1,240 @@
+<!DOCTYPEhtml>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title></title>
+
+    <style>
+
+        ul{margin: 0;padding: 0;}
+
+        li{list-style: none}
+
+        .box{width: 100px;height: 150px;margin:100px auto;position: relative;overflow: hidden;}
+
+        .box2{width: 112px;height:56px;position: relative;margin: 0 auto;border: 3px solid red;overflow: hidden;}
+
+        .list2{position: absolute;width:400%;left: -56px;}
+
+        .list2 li{float: left;width:56px;height: 56px;line-height: 56px;text-align: center;font-size:20px;font-weight: 600;}
+
+        .list2 li:nth-child(even){background:#EBB440}
+
+        .list2 li:nth-child(odd){background:#00A0E8}
+
+        .box3{background: #EBB440;width:150px;margin: 30px auto;height: 35px;position: relative;overflow: hidden;}
+
+        .list3{position: absolute;top:-35px;width: 100%}
+
+        .list3 li{height: 35px;line-height:35px;text-align: center;}
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<ul class="list">
+
+    <li>111111</li>
+
+    <li>222222</li>
+
+    <li>333333</li>
+
+    <li>444444</li>
+
+    <li>555555</li>
+
+    <li>666666</li>
+
+    <li>777777</li>
+
+    <li>888888</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="box2">
+
+<ul class="list2">
+
+    <li>1</li>
+
+    <li>2</li>
+
+    <li>3</li>
+
+    <li>4</li>
+
+    <li>5</li>
+
+    <li>6</li>
+
+    <li>7</li>
+
+    <li>8</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="box3">
+
+<ul class="list3">
+
+    <li>滚动消息：666666</li>
+
+    <li>滚动消息：111111</li>
+
+    <li>滚动消息：222222</li>
+
+    <li>滚动消息：333333</li>
+
+    <li>滚动消息：444444</li>
+
+    <li>滚动消息：555555</li>
+
+</ul>
+
+</div>
+
+<script src="jquery-1.8.3.min.js"></script>
+
+<script>
+
+(function () {
+
+    var scrtime;
+
+    $(".list").hover(function(){
+
+        clearInterval(scrtime);
+
+    },function(){
+
+        scrtime = setInterval(function(){
+
+            var $ul = $(".list");
+
+            var liHeight =$ul.find("li:last").height();
+
+            $ul.animate({marginTop :-liHeight+"px"},800,function(){
+
+                $ul.find("li:first").appendTo($ul);
+
+                $ul.find("li:last").hide();
+
+                $ul.css({marginTop:0});
+
+                $ul.find("li:last").fadeIn(1000);
+
+            });
+
+            $ul.find("li").eq(":first").fadeOut(1000);
+
+        },2400);
+
+    }).trigger("mouseleave");
+
+})();
+
+(function () {
+
+    var scrtime;
+
+    $(".list2").hover(function(){
+
+        clearInterval(scrtime);
+
+    },function(){
+
+        scrtime = setInterval(function(){
+
+            var $ul =$(".list2");
+
+            var liHeight =$ul.find("li:last").width();
+
+            $ul.animate({marginLeft :liHeight+"px"},800,function(){
+
+                $ul.find("li:last").prependTo($ul);
+
+                $ul.find("li:first").hide();
+
+                $ul.css({marginLeft:0});
+
+                $ul.find("li:first").fadeIn(1000);
+
+            });
+
+            $ul.find("li").eq(":last").fadeOut(1000);
+
+        },2400);
+
+    }).trigger("mouseleave");
+
+})();
+
+(function () {
+
+    var scrtime;
+
+    $(".list3").hover(function(){
+
+        clearInterval(scrtime);
+
+    },function(){
+
+        scrtime = setInterval(function(){
+
+            var $ul =$(".list3");
+
+            var liHeight =$ul.find("li:last").height();
+
+            $ul.animate({marginTop :liHeight+"px"},800,function(){
+
+                $ul.find("li:last").prependTo($ul);
+
+                $ul.find("li:first").hide();
+
+                $ul.css({marginTop:0});
+
+                $ul.find("li:first").fadeIn(1000);
+
+            });
+
+            $ul.find("li").eq(":last").fadeOut(1000);
+
+        },2400);
+
+    }).trigger("mouseleave");
+
+
+})();
+
+</script>
+<!--标准盒模型-->
+<!--盒子的宽度=width+左右padding+左右border+左右margin-->
+<!--css3盒模型/低版本ie：怪异盒模型-->
+<!--盒子的宽度=width（padding+border）+左右margin-->
+<!--23.什么是外边距重叠？重叠的结果是什么？-->
+<!--外边距重叠就是margin-collapse。-->
+<!--在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。-->
+<!--折叠结果遵循下列计算规则：-->
+<!--两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。-->
+<!--两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。-->
+<!--两个外边距一正一负时，折叠结果是两者的相加的和。-->
+</body>
+
+</html>

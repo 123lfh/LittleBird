@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-size: 14px;
+    cursor: pointer;
+    font-family: "STKaiti";
+    background-color: #f1f2f6;
+}
+
+.inner {
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/*================header*/
+header {
+    /*background-color: black;*/
+    height: 120px;
+    background: url("../images/bg_01.png");
+}
+
+nav > ul > li {
+    float: left;
+    line-height: 120px;
+    margin: 0 20px;
+    position: relative;
+    font-weight: bolder;
+    color: rgb(254, 254, 254);
+
+}
+
+nav > ul > li img {
+    vertical-align: middle;
+}
+
+.layer {
+    position: absolute;
+    top: 80px;
+    left: -20px;
+    /*border: 1px solid black;*/
+    color: black;
+    line-height: 30px;
+    display: none;
+    z-index: 999;
+}
+
+.layer ul li {
+    font-weight: 100;
+    width: 140px;
+    text-indent: 1em;
+    background-color: black;
+    font-size: 12px;
+    transition: 0.5s;
+    color: white;
+}
+
+.layer ul li.hover {
+    background-color: pink;
+    text-indent: 2em;
+    color: black;
+}
+
+.layer .right {
+    float: right;
+    display: none;
+    color: white;
+    margin-right: 10px;
+}
+
+/*=================================article*/
+article {
+    min-height: 1300px;
+    z-index: 100;
+
+}
+
+article .inner {
+    background-color: #fff;
+
+}
+
+.content {
+    width: 780px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 1500px;
+    padding-bottom: 50px;
+}
+
+article .top {
+    text-align: center;
+}
+
+.top h1 {
+    font-size: 54px;
+    font-family: "STKaiti";
+    color: rgb(49, 24, 89);
+    line-height: 0.296;
+    margin-top: 100px;
+}
+
+.top p {
+    font-size: 18px;
+    font-family: "Arial";
+    color: rgb(49, 24, 89);
+    line-height: 0.889;
+    margin-top: 30px;
+    letter-spacing: 5px;
+}
+
+.top ul {
+    width: 90px;
+    margin: 20px auto 0;
+}
+
+.top ul li {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    float: left;
+    margin: 10px;
+    background: rgba(64, 147, 224, 1);
+    /*background-color: red;*/
+}
+
+.mid {
+    margin-top: 50px;
+}
+
+.mid h3 {
+    font-size: 30px;
+    color: rgb(49, 24, 89);
+    height: 30px;
+    border-bottom: 2px solid #d7d3dd;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.mid h3 img {
+    position: absolute;
+    right: -50px;
+    bottom: -1px;
+}
+
+.mid ul {
+    width: 1110px;
+    position: relative;
+    left: -165px;
+}
+
+.mid ul li {
+    width: 535px;
+    height: 240px;
+    float: left;
+    /*background: pink;*/
+    margin: 20px 10px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    border: 1px solid #CCC;
+}
+
+.mid ul li .list_img {
+    /*float: left;*/
+}
+
+.mid ul li .list_txt {
+    width: 215px;
+    margin-top: 20px;
+}
+
+.mid ul li .list_txt p {
+    line-height: 20px;
+}
+
+.mid ul li .list_txt .title {
+    font-size: 16px;
+}
+
+.mid ul li .list_txt .time {
+    font-size: 14px;
+    color: #999;
+}
+.mid .lodding{
+      background: url("../images/lis_more_btn_bg.png") no-repeat 0 -58px;
+    width: 58px;
+    height: 58px;
+    margin: 30px auto 0;
+  }
+.mid .lodding:hover{
+    background-position: 0 0;
+}
+/*=========================footer*/
+
+.art8 {
+    background: url("../images/bg_06.png") no-repeat top center;
+    margin-top: -33px;
+    padding-top: 60px;
+    height: 321px;
+    z-index: 999;
+    position: relative;
+}
+
+.art8 .inner {
+
+}
+
+.art8 .shang {
+    width: 50px;
+    height: 50px;
+    margin-right: -67px;
+    background: url("../imgs/scroll_top_bg.png");
+    background-position: 0 0;
+}
+
+.art8 .art8-middle {
+    margin: 25px 0 75px 0;
+    position: relative;
+}
+
+.art8 .art8-middle ul {
+    height: 88px;
+    width: 565px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.art8 .art8-middle ul li {
+    width: 57px;
+    height: 57px;
+    float: left;
+    margin-right: 27px;
+    background-position: 0 0;
+}
+
+.art8 .art8-middle ul li:last-of-type {
+    margin-right: 0;
+}
+
+.art8 .art8-middle ul li:hover {
+    width: 57px;
+    height: 57px;
+    background-position: 0 -57px;
+}
+
+.li1 {
+    background: url("../imgs/yinyue_duo.png");
+}
+
+.li2 {
+    background: url("../imgs/yinyue_lai.png");
+}
+
+.li3 {
+    background: url("../imgs/yinyue_mi.png");
+}
+
+.li4 {
+    background: url("../imgs/yinyue_fa.png");
+}
+
+.li5 {
+    background: url("../imgs/yinyue_suo.png");
+}
+
+.li6 {
+    background: url("../imgs/yinyue_la.png");
+}
+
+.li7 {
+    background: url("../imgs/yinyue_xi.png");
+}
+
+.contactus {
+    position: absolute;
+    right: -85px;
+    top: 0;
+}
